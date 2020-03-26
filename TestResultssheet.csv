@@ -1,0 +1,105 @@
+"DAX function","Generated SQL","Expected","Actual","Results"
+"ABSOLUTE","select sum(     float8(""C1"")               ) as ""C1""from (    select      abs(""num0"")   as ""C1""    from ""rp"".""calcs"") as ""ITBL""","73.00","73.00","PASS"
+"DIVIDE","select sum(""C1"") as ""C1""
+from 
+(
+    select case
+            when ""int1"" is null
+            then null
+            else (case
+                when      float8(""int0"")                is null or      float8(""int0"")                =  0.0 
+                then null
+                else      float8(""int1"")                /      float8(""int0"")               
+            end)
+        end as ""C1""
+    from ""rp"".""calcs""
+) as ""ITBL""","-4.55","-4.55","PASS"
+"FLOOR","select sum(     float8(""int0"")               ) as ""C1""
+from ""rp"".""calcs""","68.00","68.00","PASS"
+"GCD","select max(""int0"") as ""C1""from ""rp"".""calcs""","11.00","11.00","PASS"
+"SQRT","select sum(""C1"") as ""C1""from (    select      sqrt(     float8(""int0"")               )   as ""C1""    from ""rp"".""calcs"") as ""ITBL""","26.34","26.34","PASS"
+"COMBIN","select max(""int1"") as ""C1""
+from ""rp"".""calcs""","3.00","3.00","PASS"
+"LCM","select max(""int3"") as ""C1""from ""rp"".""calcs""","18.00","18.00","PASS"
+"EXP","select sum(""C1"") as ""C1""
+from 
+(
+    select      exp((case
+            when      float8(""int0"")                is not null
+            then      float8(""int0"")               
+            else  0.000 
+        end))   as ""C1""
+    from ""rp"".""calcs""
+) as ""ITBL""","92132.71","92132.71","PASS"
+"SUMX","select sum(""C1"") as ""C1""
+from 
+(
+    select ""int3"",
+        case
+            when      float8(""int3"")                +  5.0000  is not null
+            then      float8(""int3"")                +  5.0000 
+            else  5.0000
+        end as ""C1""
+    from ""rp"".""calcs""
+) as ""ITBL""
+","240.00","240.00","PASS"
+"SUM","select sum(     float8(""int2"")               ) as ""C1""from ""rp"".""calcs""","-14.00","-14.00","PASS"
+"TRUNC","select sum(     float8(""C1"")               ) as ""C1""
+from 
+(
+    select  -14  as ""C1""
+    from ""rp"".""batters""
+) as ""ITBL""","-1165976.00","-1165976.00","PASS"
+"ALLCROSSFILTER","select sum(     float8(""book_id"")               ) as ""C1""from ""rp"".""risk_table""","54622977014.00","54622977014.00","PASS"
+"RELATED","select sum(     float8(""ab"")               ) as ""C1""from ""rp"".""batters""","12263059.00","12263059.00","PASS"
+"VALUES","select      float8(count(distinct(""ab"")))                +      float8(max(""C1""))                as ""C1""
+from 
+(
+    select ""ab"",
+        case
+            when ""ab"" is null
+            then  1 
+            else  0 
+        end as ""C1""
+    from ""rp"".""batters""
+) as ""ITBL""","694.00","694.00","PASS"
+"ALLSELECTED","select sum(     float8(""measure"")               ) as ""C1""
+from ""rp"".""cob_date""","41.00","41.00","PASS"
+"RELATEDTABLE","select sum(     float8(""games"")               ) as ""C1""from ""rp"".""batters""","4279701.00","4279701.00","PASS"
+"ALLNOBLANKROW","select count( 1 ) as ""C1""
+from ""rp"".""cob_date""","41.00","41.00","PASS"
+"DISTINCT(COLUMN)","select      float8(count(distinct(""player"")))                +      float8(max(""C1""))                as ""C1""
+from 
+(
+    select ""player"",
+        case
+            when ""player"" is null
+            then  1 
+            else  0 
+        end as ""C1""
+    from ""rp"".""batters""
+) as ""ITBL""","15243.00","15243.00","PASS"
+"EARLIER","select sum(     float8(""bb"")               ) as ""C1""
+from 
+(
+    select ""bb""
+    from ""rp"".""batters""
+    where ""league"" in ( 'AL' ,  'NL',  'AA' ,  'UA' ,  'NA' ,  'FL' ,  'PL' )
+) as ""ITBL""","1127992.00","1127992.00","PASS"
+"ALLEXCEPT","select sum(     float8(""cs"")               ) as ""C1""
+from ""rp"".""batters""
+","82083.00","82083.00","PASS"
+"FILTER","select count(""league"") as ""C1""
+from 
+(
+    select ""league""
+    from ""rp"".""batters""
+    where ""player"" =  'Aaron Boone' 
+) as ""ITBL""","6.00","6.00","PASS"
+"Test","select count(""league"") as ""C1""
+from 
+(
+    select ""league""
+    from ""rp"".""batters""
+    where ""player"" =  'Aaron Boone' 
+) as ""ITBL""","","6.00","Error"

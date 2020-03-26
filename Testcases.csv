@@ -1,0 +1,105 @@
+﻿DAX function,Generated SQL,Expected
+ABSOLUTE,"select sum(     float8(""C1"")               ) as ""C1""from (    select      abs(""num0"")   as ""C1""    from ""rp"".""calcs"") as ""ITBL""",73
+DIVIDE,"select sum(""C1"") as ""C1""
+from 
+(
+    select case
+            when ""int1"" is null
+            then null
+            else (case
+                when      float8(""int0"")                is null or      float8(""int0"")                =  0.0 
+                then null
+                else      float8(""int1"")                /      float8(""int0"")               
+            end)
+        end as ""C1""
+    from ""rp"".""calcs""
+) as ""ITBL""",-4.55
+FLOOR,"select sum(     float8(""int0"")               ) as ""C1""
+from ""rp"".""calcs""",68
+GCD,"select max(""int0"") as ""C1""from ""rp"".""calcs""",11
+SQRT,"select sum(""C1"") as ""C1""from (    select      sqrt(     float8(""int0"")               )   as ""C1""    from ""rp"".""calcs"") as ""ITBL""",26.34
+COMBIN,"select max(""int1"") as ""C1""
+from ""rp"".""calcs""",3
+LCM,"select max(""int3"") as ""C1""from ""rp"".""calcs""",18
+EXP,"select sum(""C1"") as ""C1""
+from 
+(
+    select      exp((case
+            when      float8(""int0"")                is not null
+            then      float8(""int0"")               
+            else  0.000 
+        end))   as ""C1""
+    from ""rp"".""calcs""
+) as ""ITBL""","92,132.71"
+SUMX,"select sum(""C1"") as ""C1""
+from 
+(
+    select ""int3"",
+        case
+            when      float8(""int3"")                +  5.0000  is not null
+            then      float8(""int3"")                +  5.0000 
+            else  5.0000
+        end as ""C1""
+    from ""rp"".""calcs""
+) as ""ITBL""
+",240
+SUM,"select sum(     float8(""int2"")               ) as ""C1""from ""rp"".""calcs""",-14
+TRUNC,"select sum(     float8(""C1"")               ) as ""C1""
+from 
+(
+    select  -14  as ""C1""
+    from ""rp"".""batters""
+) as ""ITBL""",-1165976
+ALLCROSSFILTER,"select sum(     float8(""book_id"")               ) as ""C1""from ""rp"".""risk_table""",54622977014
+RELATED,"select sum(     float8(""ab"")               ) as ""C1""from ""rp"".""batters""","1,22,63,059.00"
+VALUES,"select      float8(count(distinct(""ab"")))                +      float8(max(""C1""))                as ""C1""
+from 
+(
+    select ""ab"",
+        case
+            when ""ab"" is null
+            then  1 
+            else  0 
+        end as ""C1""
+    from ""rp"".""batters""
+) as ""ITBL""",694
+ALLSELECTED,"select sum(     float8(""measure"")               ) as ""C1""
+from ""rp"".""cob_date""",41
+RELATEDTABLE,"select sum(     float8(""games"")               ) as ""C1""from ""rp"".""batters""","42,79,701.00"
+ALLNOBLANKROW,"select count( 1 ) as ""C1""
+from ""rp"".""cob_date""",41
+DISTINCT(COLUMN),"select      float8(count(distinct(""player"")))                +      float8(max(""C1""))                as ""C1""
+from 
+(
+    select ""player"",
+        case
+            when ""player"" is null
+            then  1 
+            else  0 
+        end as ""C1""
+    from ""rp"".""batters""
+) as ""ITBL""",15243
+EARLIER,"select sum(     float8(""bb"")               ) as ""C1""
+from 
+(
+    select ""bb""
+    from ""rp"".""batters""
+    where ""league"" in ( 'AL' ,  'NL',  'AA' ,  'UA' ,  'NA' ,  'FL' ,  'PL' )
+) as ""ITBL""","11,27,992.00"
+ALLEXCEPT,"select sum(     float8(""cs"")               ) as ""C1""
+from ""rp"".""batters""
+","82,083.00"
+FILTER,"select count(""league"") as ""C1""
+from 
+(
+    select ""league""
+    from ""rp"".""batters""
+    where ""player"" =  'Aaron Boone' 
+) as ""ITBL""",6
+Test,"select count(""league"") as ""C1""
+from 
+(
+    select ""league""
+    from ""rp"".""batters""
+    where ""player"" =  'Aaron Boone' 
+) as ""ITBL""",
