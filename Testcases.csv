@@ -103,3 +103,23 @@ from
     from ""rp"".""batters""
     where ""player"" =  'Aaron Boone' 
 ) as ""ITBL""",
+LEN,"select sum(     float8(""C1"")               ) as ""C1""
+from 
+(
+    select      length(""team"")   as ""C1""
+    from ""rp"".""batters""
+) as ""ITBL""",1380902
+VALUE,"select sum(     float8(""C1"")               ) as ""C1""from (    select  65 as ""C1""    from ""rp"".""batters"") as ""ITBL""","54,13,460.00"
+Search,"select sum(     float8(""C1"")               ) as ""C1""
+from 
+(
+    select  4  as ""C1""
+    from ""rp"".""batters""
+) as ""ITBL""",333136
+,"select sum(     float8(""bb"")               ) as ""C1"",    sum(     float8(""ab"")               ) as ""C2""from (    select ""ab"",        ""bb""    from ""rp"".""batters""    where ""league"" =  'AA' ) as ""ITBL""",
+DATEDIFF,"select sum(""C1"") as ""C1""
+from 
+(
+    select      float8(     year(""date1"")  )                -      float8(     year(""date0"")  )                as ""C1""
+    from ""rp"".""calcs""
+) as ""ITBL""",61
