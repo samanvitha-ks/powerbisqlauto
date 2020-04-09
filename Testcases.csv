@@ -1662,3 +1662,12 @@ NL,Zack Wheat,Brooklyn Robins
 NL,Zack Wheat,Brooklyn Dodgers
 NL,Zack Taylor,New York Giants
 NL,Zack Taylor,Chicago Cubs"
+MAX,"select max(""int0"") as ""C1""from ""rp"".""calcs""",11
+MIN,"select min(""int0"") as ""C1""from ""rp"".""calcs""",1
+COUNT,"select count(""key"") as ""C1""from ""rp"".""calcs""",17
+TAN,"select sum(     decimal(""C1"")               ) as ""C1""
+from 
+(
+    select  1.5574  as ""C1""
+    from ""rp"".""calcs""
+) as ""ITBL""",17
