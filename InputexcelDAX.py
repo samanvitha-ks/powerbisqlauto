@@ -21,21 +21,25 @@ for row in csv_f:
         cursor.execute(sql)
         result = cursor.fetchall()
         i = 'FALSE'
+        str1 = ""
         for row1 in result:
-            combined.extend(row1)
-            a = format(combined[3],'.2f')
-            b = col[2]
-            if b == '':
-                i = 'Error'
-            else:
-                b = format(float(col[2].replace(',','')),'.2f')
-                if a == b:
-                 i = 'PASS'
-            combined.append(i)
-            temp = [col[0],col[1],b,a,i]
-            csv_f2.writerow(temp)
+            a = row1[0]
+            if isinstance(a,float):
+                a = format(a,'.2f')
+            str1 = str1 + str(a)+"\n"
+        b = col[2]
+        str1 = str1.rstrip()
+        if b == '':
+            i = 'Error'
+        else:
+            if isinstance(b,float):
+                b = format(float(col[2].replace(',', '')), '.2f')
+            if str1 == str(b):
+                i = 'PASS'
+        temp = [col[0], col[1], b, str1.rstrip(), i]
+        csv_f2.writerow(temp)
+
 fp.close()
 fp2.close()
 cursor.close()
 conn.close()
-
