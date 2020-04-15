@@ -1671,3 +1671,447 @@ from
     select  1.5574  as ""C1""
     from ""rp"".""calcs""
 ) as ""ITBL""",17
+Total stores,"select top 101
+    name
+from 
+(
+    select name
+    from 
+    (
+        select name,
+            case
+                when not C1 is null and (C1 =  2014  and C1 is not null)
+                then  'New Store' 
+                else  'Same Store' 
+            end as C2
+        from 
+        (
+            select opendate,
+                name,
+                     year(opendate)   as C1
+            from rp.store
+        ) as ITBL
+    ) as ITBL
+    where C2 =  'New Store'
+) as ITBL
+group by name","York Fashions Direct
+Winchester Fashions Direct
+Washington Fashions Direct
+Monroeville Fashions Direct
+Sharonville Fashions Direct
+Cincinnati 2 Fashions Direct
+Pasadena Lindseys
+Ft. Oglethorpe Lindseys
+Knoxville Lindseys
+Wilson Lindseys"
+Current year sales by Store number name,"select top 1000001
+    ""name"",
+    sum(     float8(""sum_markdown_sales_dollars"")               ) as ""C1"",
+    sum(     float8(""sum_regular_sales_dollars"")               ) as ""C2""
+from 
+(
+    select ""OTBL"".""sum_regular_sales_dollars"",
+        ""OTBL"".""sum_markdown_sales_dollars"",
+        ""ITBL"".""name""
+    from 
+    (
+        select ""monthid"",
+            ""itemid"",
+            ""locationid"",
+            ""sum_grossmarginamount"",
+            ""sum_regular_sales_dollars"",
+            ""sum_markdown_sales_dollars"",
+            ""scenarioid"",
+            ""reportingperiodid"",
+            ""sum_regular_sales_units"",
+            ""sum_markdown_sales_units""
+        from ""rp"".""sales""
+        where ""scenarioid"" =  1
+    ) as ""OTBL""
+    left outer join 
+    (
+        select ""locationid"",
+            ""name"",
+            case
+                when not ""C1"" is null and (""C1"" =  2014  and ""C1"" is not null)
+                then  'New Store' 
+                else  'Same Store' 
+            end as ""C2""
+        from 
+        (
+            select ""locationid"",
+                ""opendate"",
+                ""name"",
+                     year(""opendate"")   as ""C1""
+            from ""rp"".""store""
+        ) as ""ITBL""
+    ) as ""ITBL"" on (""OTBL"".""locationid"" = ""ITBL"".""locationid"")
+    where ""C2"" =  'New Store'
+) as ""ITBL""
+group by ""name""","Winchester Fashions Direct
+Washington Fashions Direct"
+Open Store Countby month and Chain,"select top 1000001
+    ""chain"",
+    ""C4"",
+    count(""opendate"") as ""C1""
+from 
+(
+    select ""opendate"",
+        ""chain"",
+        ""C3"",
+        ""C4""
+    from 
+    (
+        select ""opendate"",
+            ""chain"",
+            case
+                when not ""C1"" is null and (""C1"" =  2014  and ""C1"" is not null)
+                then  'New Store' 
+                else  'Same Store' 
+            end as ""C3"",
+            case
+                when not ""C2"" is null and (""C2"" =  1  and ""C2"" is not null)
+                then  'January' 
+                else (case
+                    when not ""C2"" is null and (""C2"" =  2  and ""C2"" is not null)
+                    then  'February' 
+                    else (case
+                        when not ""C2"" is null and (""C2"" =  3  and ""C2"" is not null)
+                        then  'March'
+                        else (case
+                            when not ""C2"" is null and (""C2"" =  4  and ""C2"" is not null)
+                            then  'April' 
+                            else (case
+                                when not ""C2"" is null and (""C2"" =  5  and ""C2"" is not null)
+                                then  'May'
+                                else (case
+                                    when not ""C2"" is null and (""C2"" =  6  and ""C2"" is not null)
+                                    then  'June' 
+                                    else (case
+                                        when not ""C2"" is null and (""C2"" =  7  and ""C2"" is not null)
+                                        then  'July' 
+                                        else (case
+                                            when not ""C2"" is null and (""C2"" =  8  and ""C2"" is not null)
+                                            then  'August' 
+                                            else (case
+                                                when not ""C2"" is null and (""C2"" =  9  and ""C2"" is not null)
+                                                then  'September' 
+                                                else (case
+                                                    when not ""C2"" is null and (""C2"" =  10  and ""C2"" is not null)
+                                                    then 'October'
+                                                    else (case
+                                                        when not ""C2"" is null and (""C2"" =  11  and ""C2"" is not null)
+                                                        then  'November' 
+                                                        else (case
+                                                            when not ""C2"" is null and (""C2"" =  12  and ""C2"" is not null)
+                                                            then  'December' 
+                                                            else  'Unknown month number' 
+                                                        end)
+                                                    end)
+                                                end)
+                                            end)
+                                        end)
+                                    end)
+                                end)
+                            end)
+                        end)
+                    end)
+                end)
+            end as ""C4""
+        from 
+        (
+            select ""opendate"",
+                ""chain"",
+                     year(""opendate"")   as ""C1"",
+                     month(""opendate"")   as ""C2""
+            from ""rp"".""store""
+        ) as ""ITBL""
+    ) as ""ITBL""
+    where ""C3"" =  'New Store'
+) as ""ITBL""
+group by ""chain"",
+    ""C4""","Fashions Direct
+Lindseys"
+Sales perSqft by Name,"select top 1000001
+    ""name"",
+    sum(     float8(""sellingareasize"")               ) as ""C1""
+from 
+(
+    select ""sellingareasize"",
+        ""name"",
+        ""C2""
+    from 
+    (
+        select ""sellingareasize"",
+            ""name"",
+            case
+                when not ""C1"" is null and (""C1"" =  2014  and ""C1"" is not null)
+                then  'New Store' 
+                else  'Same Store' 
+            end as ""C2""
+        from 
+        (
+            select ""opendate"",
+                ""sellingareasize"",
+                ""name"",
+                     year(""opendate"")   as ""C1""
+            from ""rp"".""store""
+        ) as ""ITBL""
+    ) as ""ITBL""
+    where ""C2"" =  'New Store'
+) as ""ITBL""
+group by ""name""","York Fashions Direct
+Winchester Fashions Direct
+Washington Fashions Direct
+Monroeville Fashions Direct
+Sharonville Fashions Direct
+Cincinnati 2 Fashions Direct
+Pasadena Lindseys
+Ft. Oglethorpe Lindseys
+Knoxville Lindseys
+Wilson Lindseys"
+Sales by Product category,"select top 1000001
+    category,
+    sum(     float8(sum_markdown_sales_dollars)               ) as C1,
+    sum(     float8(sum_regular_sales_dollars)               ) as C2
+from 
+(
+    select OTBL.sum_regular_sales_dollars,
+        OTBL.sum_markdown_sales_dollars,
+        ITBL.category
+    from 
+    (
+        select monthid,
+            itemid,
+            locationid,
+            sum_grossmarginamount,
+            sum_regular_sales_dollars,
+            sum_markdown_sales_dollars,
+            scenarioid,
+            reportingperiodid,
+            sum_regular_sales_units,
+            sum_markdown_sales_units
+        from rp.sales
+        where scenarioid =  1 
+    ) as OTBL
+    left outer join rp.item as ITBL on (OTBL.itemid = ITBL.itemid)
+) as ITBL
+group by category
+","010-Womens
+030-Kids"
+Monthly Sales by Segment,"select top 1000001
+    ""fiscalmonth"",
+    ""segment"",
+    sum(     float8(""sum_markdown_sales_dollars"")               ) as ""C1"",
+    sum(     float8(""sum_regular_sales_dollars"")               ) as ""C2""
+from 
+(
+    select ""OTBL"".""sum_regular_sales_dollars"",
+        ""OTBL"".""sum_markdown_sales_dollars"",
+        ""OTBL"".""fiscalmonth"",
+        ""ITBL"".""segment""
+    from 
+    (
+        select ""monthid"",
+            ""itemid"",
+            ""locationid"",
+            ""sum_grossmarginamount"",
+            ""sum_regular_sales_dollars"",
+            ""sum_markdown_sales_dollars"",
+            ""scenarioid"",
+            ""reportingperiodid"",
+            ""sum_regular_sales_units"",
+            ""sum_markdown_sales_units"",
+            ""C1"",
+            ""period"",
+            ""fiscalyear"",
+            ""fiscalmonth"",
+            ""month"",
+            ""C2"",
+            ""C3""
+        from 
+        (
+            select ""OTBL"".""monthid"",
+                ""OTBL"".""itemid"",
+                ""OTBL"".""locationid"",
+                ""OTBL"".""sum_grossmarginamount"",
+                ""OTBL"".""sum_regular_sales_dollars"",
+                ""OTBL"".""sum_markdown_sales_dollars"",
+                ""OTBL"".""scenarioid"",
+                ""OTBL"".""reportingperiodid"",
+                ""OTBL"".""sum_regular_sales_units"",
+                ""OTBL"".""sum_markdown_sales_units"",
+                ""OTBL"".""C1"",
+                ""OTBL"".""period"",
+                ""OTBL"".""fiscalyear"",
+                ""OTBL"".""fiscalmonth"",
+                ""OTBL"".""month"",
+                ""ITBL"".""locationid"" as ""C2"",
+                ""ITBL"".""C2"" as ""C3""
+            from 
+            (
+                select ""OTBL"".""monthid"",
+                    ""OTBL"".""itemid"",
+                    ""OTBL"".""locationid"",
+                    ""OTBL"".""sum_grossmarginamount"",
+                    ""OTBL"".""sum_regular_sales_dollars"",
+                    ""OTBL"".""sum_markdown_sales_dollars"",
+                    ""OTBL"".""scenarioid"",
+                    ""OTBL"".""reportingperiodid"",
+                    ""OTBL"".""sum_regular_sales_units"",
+                    ""OTBL"".""sum_markdown_sales_units"",
+                    ""ITBL"".""reportingperiodid"" as ""C1"",
+                    ""ITBL"".""period"",
+                    ""ITBL"".""fiscalyear"",
+                    ""ITBL"".""fiscalmonth"",
+                    ""ITBL"".""month""
+                from 
+                (
+                    select ""monthid"",
+                        ""itemid"",
+                        ""locationid"",
+                        ""sum_grossmarginamount"",
+                        ""sum_regular_sales_dollars"",
+                        ""sum_markdown_sales_dollars"",
+                        ""scenarioid"",
+                        ""reportingperiodid"",
+                        ""sum_regular_sales_units"",
+                        ""sum_markdown_sales_units""
+                    from ""rp"".""sales""
+                    where ""scenarioid"" =  1 
+                ) as ""OTBL""
+                left outer join ""rp"".""time"" as ""ITBL"" on (""OTBL"".""reportingperiodid"" = ""ITBL"".""reportingperiodid"")
+            ) as ""OTBL""
+            left outer join 
+            (
+                select ""locationid"",
+                    case
+                        when not ""C1"" is null and (""C1"" =  2014  and ""C1"" is not null)
+                        then  'New Store' 
+                        else  'Same Store' 
+                    end as ""C2""
+                from 
+                (
+                    select ""locationid"",
+                        ""opendate"",
+                             year(""opendate"")   as ""C1""
+                    from ""rp"".""store""
+                ) as ""ITBL""
+            ) as ""ITBL"" on (""OTBL"".""locationid"" = ""ITBL"".""locationid"")
+        ) as ""ITBL""
+        where ""C3"" =  'New Store' 
+    ) as ""OTBL""
+    left outer join ""rp"".""item"" as ""ITBL"" on (""OTBL"".""itemid"" = ""ITBL"".""itemid"")
+) as ""ITBL""
+group by ""fiscalmonth"",
+    ""segment""","Feb
+Mar"
+Monthly Sales by Item,"select top 1000001
+    ""fiscalmonth"",
+    ""C4"",
+    sum(     float8(""sum_markdown_sales_dollars"")               ) as ""C1"",
+    sum(     float8(""sum_regular_sales_dollars"")               ) as ""C2""
+from 
+(
+    select ""OTBL"".""sum_regular_sales_dollars"",
+        ""OTBL"".""sum_markdown_sales_dollars"",
+        ""OTBL"".""fiscalmonth"",
+        ""ITBL"".""itemid"" as ""C4""
+    from 
+    (
+        select ""monthid"",
+            ""itemid"",
+            ""locationid"",
+            ""sum_grossmarginamount"",
+            ""sum_regular_sales_dollars"",
+            ""sum_markdown_sales_dollars"",
+            ""scenarioid"",
+            ""reportingperiodid"",
+            ""sum_regular_sales_units"",
+            ""sum_markdown_sales_units"",
+            ""C1"",
+            ""period"",
+            ""fiscalyear"",
+            ""fiscalmonth"",
+            ""month"",
+            ""C2"",
+            ""C3""
+        from 
+        (
+            select ""OTBL"".""monthid"",
+                ""OTBL"".""itemid"",
+                ""OTBL"".""locationid"",
+                ""OTBL"".""sum_grossmarginamount"",
+                ""OTBL"".""sum_regular_sales_dollars"",
+                ""OTBL"".""sum_markdown_sales_dollars"",
+                ""OTBL"".""scenarioid"",
+                ""OTBL"".""reportingperiodid"",
+                ""OTBL"".""sum_regular_sales_units"",
+                ""OTBL"".""sum_markdown_sales_units"",
+                ""OTBL"".""C1"",
+                ""OTBL"".""period"",
+                ""OTBL"".""fiscalyear"",
+                ""OTBL"".""fiscalmonth"",
+                ""OTBL"".""month"",
+                ""ITBL"".""locationid"" as ""C2"",
+                ""ITBL"".""C2"" as ""C3""
+            from 
+            (
+                select ""OTBL"".""monthid"",
+                    ""OTBL"".""itemid"",
+                    ""OTBL"".""locationid"",
+                    ""OTBL"".""sum_grossmarginamount"",
+                    ""OTBL"".""sum_regular_sales_dollars"",
+                    ""OTBL"".""sum_markdown_sales_dollars"",
+                    ""OTBL"".""scenarioid"",
+                    ""OTBL"".""reportingperiodid"",
+                    ""OTBL"".""sum_regular_sales_units"",
+                    ""OTBL"".""sum_markdown_sales_units"",
+                    ""ITBL"".""reportingperiodid"" as ""C1"",
+                    ""ITBL"".""period"",
+                    ""ITBL"".""fiscalyear"",
+                    ""ITBL"".""fiscalmonth"",
+                    ""ITBL"".""month""
+                from 
+                (
+                    select ""monthid"",
+                        ""itemid"",
+                        ""locationid"",
+                        ""sum_grossmarginamount"",
+                        ""sum_regular_sales_dollars"",
+                        ""sum_markdown_sales_dollars"",
+                        ""scenarioid"",
+                        ""reportingperiodid"",
+                        ""sum_regular_sales_units"",
+                        ""sum_markdown_sales_units""
+                    from ""rp"".""sales""
+                    where ""scenarioid"" =  1 
+                ) as ""OTBL""
+                left outer join ""rp"".""time"" as ""ITBL"" on (""OTBL"".""reportingperiodid"" = ""ITBL"".""reportingperiodid"")
+            ) as ""OTBL""
+            left outer join 
+            (
+                select ""locationid"",
+                    case
+                        when not ""C1"" is null and (""C1"" =  2014  and ""C1"" is not null)
+                        then  'New Store' 
+                        else  'Same Store'
+                    end as ""C2""
+                from 
+                (
+                    select ""locationid"",
+                        ""opendate"",
+                             year(""opendate"")   as ""C1""
+                    from ""rp"".""store""
+                ) as ""ITBL""
+            ) as ""ITBL"" on (""OTBL"".""locationid"" = ""ITBL"".""locationid"")
+        ) as ""ITBL""
+        where ""C3"" =  'New Store'
+    ) as ""OTBL""
+    left outer join ""rp"".""item"" as ""ITBL"" on (""OTBL"".""itemid"" = ""ITBL"".""itemid"")
+) as ""ITBL""
+group by ""fiscalmonth"",
+    ""C4""","Feb
+Mar"
+Customer/Buyer  Overview,"select top 1000001    ""buyer"",    sum(     float8(""sum_markdown_sales_dollars"")               ) as ""C1"",    sum(     float8(""sum_regular_sales_dollars"")               ) as ""C2""from (    select ""OTBL"".""sum_regular_sales_dollars"",        ""OTBL"".""sum_markdown_sales_dollars"",        ""ITBL"".""buyer""    from     (        select ""monthid"",            ""itemid"",            ""locationid"",            ""sum_grossmarginamount"",            ""sum_regular_sales_dollars"",            ""sum_markdown_sales_dollars"",            ""scenarioid"",            ""reportingperiodid"",            ""sum_regular_sales_units"",            ""sum_markdown_sales_units""        from ""rp"".""sales""        where ""scenarioid"" =  1     ) as ""OTBL""    left outer join ""rp"".""item"" as ""ITBL"" on (""OTBL"".""itemid"" = ""ITBL"".""itemid"")) as ""ITBL""group by ""buyer""","Petty  Perry
+Gentry  Elizabeth"
