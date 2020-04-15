@@ -1,0 +1,2122 @@
+﻿DAX function,Generated SQL,Expected
+ABSOLUTE,"select sum(     float8(""C1"")               ) as ""C1""from (    select      abs(""num0"")   as ""C1""    from ""rp"".""calcs"") as ""ITBL""",73
+DIVIDE,"select sum(""C1"") as ""C1""
+from 
+(
+    select case
+            when ""int1"" is null
+            then null
+            else (case
+                when      float8(""int0"")                is null or      float8(""int0"")                =  0.0 
+                then null
+                else      float8(""int1"")                /      float8(""int0"")               
+            end)
+        end as ""C1""
+    from ""rp"".""calcs""
+) as ""ITBL""",-4.55
+FLOOR,"select sum(     float8(""int0"")               ) as ""C1""
+from ""rp"".""calcs""",68
+GCD,"select max(""int0"") as ""C1""from ""rp"".""calcs""",11
+SQRT,"select sum(""C1"") as ""C1""from (    select      sqrt(     float8(""int0"")               )   as ""C1""    from ""rp"".""calcs"") as ""ITBL""",26.34
+COMBIN,"select max(""int1"") as ""C1""
+from ""rp"".""calcs""",3
+LCM,"select max(""int3"") as ""C1""from ""rp"".""calcs""",18
+EXP,"select sum(""C1"") as ""C1""
+from 
+(
+    select      exp((case
+            when      float8(""int0"")                is not null
+            then      float8(""int0"")               
+            else  0.000 
+        end))   as ""C1""
+    from ""rp"".""calcs""
+) as ""ITBL""","92,132.71"
+SUMX,"select sum(""C1"") as ""C1""
+from 
+(
+    select ""int3"",
+        case
+            when      float8(""int3"")                +  5.0000  is not null
+            then      float8(""int3"")                +  5.0000 
+            else  5.0000
+        end as ""C1""
+    from ""rp"".""calcs""
+) as ""ITBL""
+",240
+SUM,"select sum(     float8(""int2"")               ) as ""C1""from ""rp"".""calcs""",-14
+TRUNC,"select sum(     float8(""C1"")               ) as ""C1""
+from 
+(
+    select  -14  as ""C1""
+    from ""rp"".""batters""
+) as ""ITBL""",-1165976
+ALLCROSSFILTER,"select sum(     float8(""book_id"")               ) as ""C1""from ""rp"".""risk_table""",54622977014
+RELATED,"select sum(     float8(""ab"")               ) as ""C1""from ""rp"".""batters""","1,22,63,059.00"
+VALUES,"select      float8(count(distinct(""ab"")))                +      float8(max(""C1""))                as ""C1""
+from 
+(
+    select ""ab"",
+        case
+            when ""ab"" is null
+            then  1 
+            else  0 
+        end as ""C1""
+    from ""rp"".""batters""
+) as ""ITBL""",694
+ALLSELECTED,"select sum(     float8(""measure"")               ) as ""C1""
+from ""rp"".""cob_date""",41
+RELATEDTABLE,"select sum(     float8(""games"")               ) as ""C1""from ""rp"".""batters""","42,79,701.00"
+ALLNOBLANKROW,"select count( 1 ) as ""C1""
+from ""rp"".""cob_date""",41
+DISTINCT(COLUMN),"select      float8(count(distinct(""player"")))                +      float8(max(""C1""))                as ""C1""
+from 
+(
+    select ""player"",
+        case
+            when ""player"" is null
+            then  1 
+            else  0 
+        end as ""C1""
+    from ""rp"".""batters""
+) as ""ITBL""",15243
+EARLIER,"select sum(     float8(""bb"")               ) as ""C1""
+from 
+(
+    select ""bb""
+    from ""rp"".""batters""
+    where ""league"" in ( 'AL' ,  'NL',  'AA' ,  'UA' ,  'NA' ,  'FL' ,  'PL' )
+) as ""ITBL""","11,27,992.00"
+ALLEXCEPT,"select sum(     float8(""cs"")               ) as ""C1""
+from ""rp"".""batters""
+","82,083.00"
+FILTER,"select count(""league"") as ""C1""
+from 
+(
+    select ""league""
+    from ""rp"".""batters""
+    where ""player"" =  'Aaron Boone' 
+) as ""ITBL""",6
+LEN,"select sum(     float8(""C1"")               ) as ""C1""
+from 
+(
+    select      length(""team"")   as ""C1""
+    from ""rp"".""batters""
+) as ""ITBL""",1380902
+VALUE,"select sum(     float8(""C1"")               ) as ""C1""from (    select  65 as ""C1""    from ""rp"".""batters"") as ""ITBL""","54,13,460.00"
+Search,"select sum(     float8(""C1"")               ) as ""C1""
+from 
+(
+    select  4  as ""C1""
+    from ""rp"".""batters""
+) as ""ITBL""",333136
+Two columns in results,"select sum(     float8(""bb"")               ) as ""C1"",    sum(     float8(""ab"")               ) as ""C2""from (    select ""ab"",        ""bb""    from ""rp"".""batters""    where ""league"" =  'AA' ) as ""ITBL""",
+Right,"select top 501
+    ""C1""
+from 
+(
+    select      right(""player"",  8 )   as ""C1""
+    from ""rp"".""batters""
+) as ""ITBL""
+group by ""C1""
+order by ""C1"""," Aberson
+ Abstein
+ Acevedo
+ Adamson
+ Affeldt
+ Agganis
+ Aguirre
+ Ahearne
+ Alberro
+ Alberts
+ Albosta
+ Alcaraz
+ Aldrete
+ Aldrich
+ Alfonzo
+ Allison
+ Almanza
+ Almeida
+ Almonte
+ Alstyne
+ Altizer
+ Altrock
+ Alvarez
+ Amelung
+ Amezaga
+ Andrews
+ Andujar
+ Anthony
+ Apodaca
+ Appling
+ Arntzen
+ Arundel
+ Asadoor
+ Asencio
+ Ashburn
+ Ashford
+ Astacio
+ Astroth
+ Atchley
+ Attreau
+ Aurilia
+ Ausanio
+ Averill
+ Aylward
+ Ayrault
+ Babcock
+ Backman
+ Bagwell
+ Bahnsen
+ Balboni
+ Balcena
+ Baldwin
+ Balenti
+ Balfour
+ Ballard
+ Balsamo
+ Bancker
+ Banning
+ Baptist
+ Barajas
+ Barbare
+ Barbary
+ Barbeau
+ Barcelo
+ Barclay
+ Barfoot
+ Barkett
+ Barkley
+ Barnabe
+ Barojas
+ Barrett
+ Barrios
+ Barrows
+ Bartell
+ Bartley
+ Bartson
+ Basgall
+ Bashang
+ Bashore
+ Bassett
+ Bassler
+ Bastian
+ Bateman
+ Batista
+ Batiste
+ Baumann
+ Bayless
+ Bearden
+ Beasley
+ Beattie
+ Beavens
+ Beazley
+ Bechler
+ Bechtel
+ Beckert
+ Beckett
+ Beckley
+ Beckman
+ Becquer
+ Bedford
+ Bedgood
+ Bedient
+ Beecher
+ Behenna
+ Behrman
+ Belardi
+ Belcher
+ Belinda
+ Bellman
+ Belloir
+ Beltran
+ Benitez
+ Benners
+ Bennett
+ Bentley
+ Berenyi
+ Bergamo
+ Bergman
+ Berkman
+ Bernard
+ Bernero
+ Bernier
+ Bertell
+ Bertoia
+ Berumen
+ Bescher
+ Bessent
+ Beswick
+ Betcher
+ Betemit
+ Beville
+ Bickham
+ Bierman
+ Bigelow
+ Bignell
+ Bilbrey
+ Birtsas
+ Bisland
+ Bithorn
+ Bittman
+ Blakely
+ Blalock
+ Blanche
+ Blanton
+ Blatnik
+ Blauser
+ Blazier
+ Blefary
+ Blemker
+ Blethen
+ Blewett
+ Blocker
+ Blosser
+ Blowers
+ Bockman
+ Boeckel
+ Boehler
+ Boehmer
+ Boerner
+ Bogener
+ Bohanon
+ Boitano
+ Bolling
+ Bollweg
+ Bomback
+ Bonetti
+ Bonilla
+ Bonnell
+ Bonness
+ Borders
+ Bordick
+ Bordley
+ Borland
+ Bosetti
+ Bostick
+ Bostock
+ Boswell
+ Botelho
+ Botting
+ Bouchee
+ Boucher
+ Bouldin
+ Boultes
+ Bourjos
+ Bourque
+ Bowcock
+ Bowling
+ Boyland
+ Brabant
+ Bracken
+ Bradley
+ Brandom
+ Brandon
+ Brannan
+ Branson
+ Branyan
+ Braxton
+ Brazill
+ Breeden
+ Brennan
+ Brenner
+ Brenton
+ Brenzel
+ Bridges
+ Brinker
+ Briscoe
+ Brissie
+ Bristow
+ Brittin
+ Britton
+ Broberg
+ Brocail
+ Broglio
+ Brohawn
+ Bronkey
+ Bronkie
+ Brosius
+ Broskie
+ Brosnan
+ Brottem
+ Brucker
+ Bruhert
+ Brumley
+ Brummer
+ Brunson
+ Buckels
+ Buckeye
+ Buckles
+ Buckley
+ Buckner
+ Budaska
+ Budnick
+ Buehrle
+ Bukvich
+ Bullard
+ Bullett
+ Bulling
+ Bullock
+ Bunning
+ Burbach
+ Burdick
+ Burdock
+ Burgess
+ Burkart
+ Burkett
+ Burkleo
+ Burnett
+ Burnitz
+ Burrell
+ Burrows
+ Burwell
+ Bushing
+ Bushong
+ Butcher
+ Butland
+ Butters
+ Buttery
+ Bystrom
+ Cabrera
+ Caceres
+ Cadaret
+ Calhoun
+ Calihan
+ Calvert
+ Camacho
+ Cambria
+ Camelli
+ Cameron
+ Camilli
+ Cammack
+ Camnitz
+ Campisi
+ Canavan
+ Candini
+ Caneira
+ Cannell
+ Canseco
+ Capilla
+ Caraway
+ Carbine
+ Cardona
+ Cardoni
+ Carisch
+ Carlsen
+ Carlson
+ Carlton
+ Carlyle
+ Carmona
+ Carnett
+ Carrara
+ Carreno
+ Carreon
+ Carrick
+ Carroll
+ Cashion
+ Cassady
+ Cassian
+ Cassidy
+ Cassini
+ Castino
+ Castner
+ Caudill
+ Caveney
+ Cepicky
+ Cerutti
+ Chagnon
+ Chaplin
+ Chapman
+ Chappas
+ Charles
+ Chartak
+ Charton
+ Chatham
+ Cheadle
+ Cheeves
+ Chelini
+ Chesbro
+ Chesnes
+ Chiffer
+ Chiozza
+ Chipman
+ Chipple
+ Chitren
+ Chittum
+ Chlupsa
+ Cicotte
+ Cieslak
+ Cihocki
+ Cintron
+ Cirillo
+ Cissell
+ Clanton
+ Clausen
+ Clayton
+ Clemens
+ Clement
+ Clemons
+ Cliburn
+ Clifton
+ Clinton
+ Closter
+ Clowers
+ Clyburn
+ Coakley
+ Cochran
+ Cockman
+ Coffman
+ Coggins
+ Colbern
+ Colbert
+ Colborn
+ Coleman
+ Coletta
+ Collard
+ Collier
+ Collins
+ Collver
+ Command
+ Compton
+ Condrey
+ Connell
+ Connors
+ Conovar
+ Consolo
+ Conwell
+ Conyers
+ Cookson
+ Coppola
+ Corbett
+ Corbitt
+ Cordero
+ Cordova
+ Corkins
+ Cormier
+ Cornejo
+ Cornell
+ Cornett
+ Cornutt
+ Correia
+ Correll
+ Cottier
+ Couchee
+ Coulson
+ Coulter
+ Coveney
+ Cravath
+ Creamer
+ Creeden
+ Creegan
+ Cremins
+ Crimian
+ Crisham
+ Crocker
+ Crolius
+ Crossin
+ Crowder
+ Crowell
+ Crowley
+ Crowson
+ Crudale
+ Cubbage
+ Cuddyer
+ Cuellar
+ Cunnane
+ Cushman
+ Cutshaw
+ D'Amico
+ Damaska
+ Dammann
+ Daneker
+ Daniels
+ Danning
+ Darling
+ Darnell
+ Darragh
+ Dashner
+ Daubach
+ Daubert
+ Daulton
+ Davanon
+ Davison
+ Dawkins
+ DeBerry
+ DeGroff
+ DeJesus
+ DeLucia
+ DeMerit
+ DeShong
+ DeSilva
+ Deasley
+ Decatur
+ Dedeaux
+ Dedrick
+ Deering
+ Dehlman
+ Delaney
+ Delgado
+ Delsing
+ Demaree
+ Demeter
+ Demmitt
+ Dempsey
+ Denning
+ Depaula
+ Dernier
+ Derrick
+ Dessens
+ Dettmer
+ Dettore
+ Deutsch
+ Devarez
+ Deviney
+ Dickman
+ Dickson
+ Diering
+ Dierker
+ Dietzel
+ Diggins
+ Dilauro
+ Dillard
+ Dillman
+ Dingman
+ Dinneen
+ Dishman
+ Distaso
+ Dittmer
+ Dockins
+ Doherty
+ Doljack
+ Domingo
+ Donahue
+ Donalds
+ Dondero
+ Donnels
+ Donohue
+ Donovan
+ Dorsett
+ Doscher
+ Douglas
+ Douthit
+ Dowling
+ Downing
+ Drahman
+ Dreesen
+ Dressen
+ Dresser
+ Drissel
+ Duffalo
+ Dugdale
+ Dunegan
+ Dunning
+ Dunston
+ Durning
+ Durrett
+ Dykhoff
+ Dykstra
+ Ebright
+ Edelman
+ Edmonds
+ Edwards
+ Eischen"
+LOWER,"select top 501
+    ""C2""
+from 
+(
+    select ""C2""
+    from 
+    (
+        select  lowercase(""player"")   as ""C1"",
+                 left(""player"",  8 )   as ""C2""
+        from ""rp"".""batters""
+    ) as ""ITBL""
+    where ""C1"" =  'a.j. sager'
+) as ""ITBL""
+group by ""C2""
+order by ""C2""",A.J. Sag
+LEFT,"select top 501    ""C1""from (    select      left(""player"",  5 )   as ""C1""    from ""rp"".""batters"") as ""ITBL""group by ""C1""order by ""C1""","0
+A.J. 
+Aaron
+Ab Wr
+Abbie
+Abe B
+Abe J
+Abe K
+Abe W
+Abel 
+Abie 
+Abner
+Abrah
+Ace A
+Ace P
+Ace S
+Ace W
+Ad Br
+Ad Gu
+Ad Li
+Ad Sw
+Ad Ya
+Adam 
+Addie
+Admir
+Adolf
+Adoni
+Adria
+Al Ab
+Al At
+Al Au
+Al Ba
+Al Be
+Al Bl
+Al Bo
+Al Br
+Al Bu
+Al Ca
+Al Ch
+Al Ci
+Al Cl
+Al Co
+Al Cu
+Al Cy
+Al De
+Al Do
+Al Dw
+Al Ec
+Al Ep
+Al Ev
+Al Fe
+Al Fi
+Al Fl
+Al Ga
+Al Ge
+Al Gi
+Al Gl
+Al Go
+Al Gr
+Al Ha
+Al He
+Al Ho
+Al Hr
+Al Hu
+Al Ja
+Al Jo
+Al Ju
+Al Ka
+Al Ke
+Al Kl
+Al Ko
+Al Kr
+Al Kv
+Al La
+Al Le
+Al Li
+Al Lo
+Al Lu
+Al Ly
+Al Ma
+Al Mc
+Al Me
+Al Mi
+Al Mo
+Al My
+Al Na
+Al Ne
+Al Ni
+Al Ol
+Al Or
+Al Os
+Al Pa
+Al Pe
+Al Pi
+Al Pl
+Al Po
+Al Pr
+Al Ra
+Al Re
+Al Ri
+Al Ro
+Al Ru
+Al Sa
+Al Sc
+Al Se
+Al Sh
+Al Si
+Al Sm
+Al Sp
+Al St
+Al Ta
+Al Te
+Al Th
+Al To
+Al Un
+Al Va
+Al Ve
+Al We
+Al Wi
+Al Wo
+Al Wr
+Al Ya
+Al Ye
+Al Za
+Alama
+Alan 
+Alber
+Albie
+Alec 
+Aleck
+Aleja
+Alex 
+Alexa
+Alexi
+Alf A
+Alfon
+Alfre
+Algie
+Allan
+Allen
+Allie
+Allyn
+Alonz
+Alta 
+Alton
+Alvar
+Alvin
+Amado
+Amali
+Amaur
+Ambro
+Amby 
+Amos 
+Andre
+Andru
+Anduj
+Andy 
+Angel
+Anse 
+Antho
+Anton
+Arami
+Arch 
+Archi
+Ariel
+Arky 
+Arlas
+Arlie
+Arlo 
+Arman
+Arnie
+Arnol
+Arqui
+Art A
+Art B
+Art C
+Art D
+Art E
+Art F
+Art G
+Art H
+Art J
+Art K
+Art L
+Art M
+Art N
+Art P
+Art Q
+Art R
+Art S
+Art T
+Art W
+Arthu
+Artie
+Artur
+Asa B
+Asa S
+Astya
+Atlee
+Atley
+Aubre
+Augie
+Aurel
+Austi
+Axel 
+B.J. 
+Babe 
+Baby 
+Bake 
+Baldy
+Balor
+Balvi
+Bama 
+Barba
+Barne
+Barry
+Bart 
+Barto
+Beals
+Beany
+Beau 
+Beaut
+Beike
+Belde
+Belve
+Ben B
+Ben C
+Ben D
+Ben E
+Ben F
+Ben G
+Ben H
+Ben J
+Ben K
+Ben L
+Ben M
+Ben O
+Ben P
+Ben R
+Ben S
+Ben T
+Ben V
+Ben W
+Benit
+Benj 
+Benji
+Benn 
+Benni
+Benny
+Berna
+Berni
+Bert 
+Beryl
+Bevo 
+Bibb 
+Bid M
+Biddy
+Bien 
+Biff 
+Big J
+Biggs
+Bill 
+Billy
+Bing 
+Binky
+Bip R
+Birdi
+Bitsy
+Black
+Blain
+Blais
+Blake
+Blas 
+Blix 
+Blond
+Blue 
+Bo Be
+Bo Di
+Bo Ja
+Bo Mc
+Bo Po
+Board
+Bob A
+Bob B
+Bob C
+Bob D
+Bob E
+Bob F
+Bob G
+Bob H
+Bob I
+Bob J
+Bob K
+Bob L
+Bob M
+Bob N
+Bob O
+Bob P
+Bob R
+Bob S
+Bob T
+Bob U
+Bob V
+Bob W
+Bob Z
+Bobby
+Bobo 
+Bock 
+Boile
+Bombo
+Bones
+Bonni
+Boob 
+Boog 
+Boom-
+Boots
+Boss 
+Bots 
+Boyd 
+Boze 
+Brad 
+Brade
+Brady
+Bragg
+Branc
+Brand
+Brant
+Braul
+Brend
+Brent
+Bret 
+Brett
+Brian
+Brick
+Bris 
+Britt
+Broad
+Brock
+Brode
+Brons
+Brook
+Brown
+Bruce
+Bruno
+Bry N
+Bryan
+Bryce
+Bryn 
+Bub K
+Bub M
+Bubba
+Bubbe
+Bubbl
+Buck 
+Bucks
+Bucky
+Bud A
+Bud B
+Bud C
+Bud D
+Bud H
+Bud M
+Bud P
+Bud S
+Bud T
+Bud W
+Bud Z
+Buddy
+Bug H
+Bugs 
+Bull 
+Bump 
+Bumpu
+Bun T
+Bunk 
+Bunky
+Bunny
+Burge
+Burle
+Burt 
+Buste
+Butch
+Butte
+Butto
+Butts
+Buz P
+Buzz 
+Buzzy
+By Sp
+Byrd 
+Byron
+Byung
+C.B. 
+C.C. 
+C.J. 
+C.V. 
+Cactu
+Cad C
+Cal A
+Cal B
+Cal C
+Cal D
+Cal E
+Cal H
+Cal K
+Cal M
+Cal N
+Cal R
+Cal V
+Caleb
+Calvi
+Cam C
+Camer
+Camil
+Camp 
+Candy
+Canno
+Cap A
+Cap C
+Cap P
+Carde
+Carey
+Carl 
+Carli
+Carlo
+Carlt
+Carme
+Carne
+Carr 
+Carro
+Carso
+Carte
+Case 
+Casey
+Caspe
+Cass 
+Catfi
+Cecil
+Ced L
+Cedri
+Celer
+Cesar
+Chad 
+Champ
+Chan 
+Chanc
+Chapp
+Charl
+Chaun
+Chero
+Ches 
+Chest
+Chet 
+Chi-C
+Chick
+Chico
+Chief
+Chile
+Chili
+Chin-
+Chink
+Chip 
+Chipp
+Chito
+Choll
+Chone
+Choo 
+Chris
+Chub 
+Chubb
+Chuch
+Chuck
+Chumm
+Cisco
+Cito 
+Clair
+Clanc
+Clara
+Clare
+Clark
+Claud
+Clay 
+Clayt
+Cleat
+Clem 
+Cleme
+Cleo 
+Cleon
+Clete
+Cliff
+Clint
+Clipp
+Clise
+Cloy 
+Cloyd
+Clyde
+Coake
+Cobe 
+Coco 
+Cody 
+Colby"
+COMBINE VALUES,"select top 501
+      ""C1""
+from 
+(
+    select ""player"",
+        ""team"",
+        ""league"",
+             concat((case
+            when ""league"" is not null
+            then ""league""
+            else  ''
+        end),      concat( ',' ,      concat((case
+            when ""player"" is not null
+            then ""player""
+            else  '' 
+        end),      concat( ',' , (case
+            when ""team"" is not null
+            then ""team""
+            else  '' 
+        end))  )  )  )   as ""C1""
+    from ""rp"".""batters""
+) as ""ITBL""
+group by ""player"",
+    ""team"",
+    ""league"",
+    ""C1""
+order by ""C1"" desc","UA,Yank Robinson,Baltimore Monumentals
+UA,Will Foley,Chicago/Pittsburgh (Union League)
+UA,Warren White,Washington Nationals
+UA,Walter Prince,Washington Nationals
+UA,Walter Hackett,Boston Reds
+UA,Tony Suck,Chicago/Pittsburgh (Union League)
+UA,Tony Suck,Baltimore Monumentals
+UA,Tony Cusick,Wilmington Quicksteps
+UA,Tommy McCarthy,Boston Reds
+UA,Tommy Bond,Boston Reds
+UA,Tom Sexton,Milwaukee Brewers
+UA,Tom Ryder,St. Louis Maroons
+UA,Tom O'Brien,Boston Reds
+UA,Tom Morrissey,Milwaukee Brewers
+UA,Tom Lynch,Wilmington Quicksteps
+UA,Tom Lee,Baltimore Monumentals
+UA,Tom Gillen,Philadelphia Keystones
+UA,Tom Evers,Washington Nationals
+UA,Tom Dolan,St. Louis Maroons
+UA,Tim Murnane,Boston Reds
+UA,Thomas Griffin,Milwaukee Brewers
+UA,The Only Nolan,Wilmington Quicksteps
+UA,Ted Sullivan,Kansas City Cowboys
+UA,Steve Matthias,Chicago/Pittsburgh (Union League)
+UA,Steve Dunn,St. Paul Apostles
+UA,Steve Behel,Milwaukee Brewers
+UA,Sleeper Sullivan,St. Louis Maroons
+UA,Scrappy Carroll,St. Paul Apostles
+UA,Sam Weaver,Philadelphia Keystones
+UA,Sam Crane,Cincinnati Outlaw Reds
+UA,Rooney Sweeney,Baltimore Monumentals
+UA,Redleg Snyder,Wilmington Quicksteps
+UA,Pop Joy,Washington Nationals
+UA,Phil Corridan,Chicago/Pittsburgh (Union League)
+UA,Phil Baker,Washington Nationals
+UA,Perry Werden,St. Louis Maroons
+UA,Peek-A-Boo Veach,Kansas City Cowboys
+UA,Patrick Scanlan,Boston Reds
+UA,Pat Sullivan,Kansas City Cowboys
+UA,Pat Dealy,St. Paul Apostles
+UA,Pat Carroll,Philadelphia Keystones
+UA,Pat Carroll,Altoona Mountain City
+UA,Pat Burns,Baltimore Monumentals
+UA,P. Morris,Washington Nationals
+UA,Oyster Burns,Wilmington Quicksteps
+UA,Orator Shaffer,St. Louis Maroons
+UA,Nin Alexander,Kansas City Cowboys
+UA,Ned Cuthbert,Baltimore Monumentals
+UA,Moxie Hengle,St. Paul Apostles
+UA,Moxie Hengle,Chicago/Pittsburgh (Union League)
+UA,Mox McQuery,Cincinnati Outlaw Reds
+UA,Milt Whitehead,St. Louis Maroons
+UA,Milt Whitehead,Kansas City Cowboys
+UA,Milo Lockwood,Washington Nationals
+UA,Mike Slattery,Boston Reds
+UA,Mike Lehane,Washington Nationals
+UA,Mike Lawlor,Washington Nationals
+UA,Maury Pierce,Washington Nationals
+UA,Matthew Porter,Kansas City Cowboys
+UA,Marty Creegan,Washington Nationals
+UA,Martin Powell,Cincinnati Outlaw Reds
+UA,Lou Sylvester,Cincinnati Outlaw Reds
+UA,Lou Say,Kansas City Cowboys
+UA,Lou Say,Baltimore Monumentals
+UA,Lou Meyers,Cincinnati Outlaw Reds
+UA,Lou Galvin,St. Paul Apostles
+UA,Lew Brown,Boston Reds
+UA,Levi Meyerle,Philadelphia Keystones
+UA,Lady Baldwin,Milwaukee Brewers
+UA,Kid Butler,Boston Reds
+UA,Kid Baldwin,Kansas City Cowboys
+UA,Kid Baldwin,Chicago/Pittsburgh (Union League)
+UA,Jumbo Schoeneck,Chicago/Pittsburgh (Union League)
+UA,Jumbo Schoeneck,Baltimore Monumentals
+UA,Jumbo Davis,Kansas City Cowboys
+UA,John Ward,Washington Nationals
+UA,John Tilley,St. Paul Apostles
+UA,John Siegel,Philadelphia Keystones
+UA,John Shoupe,Washington Nationals
+UA,John Ryan,Wilmington Quicksteps
+UA,John Ryan,Washington Nationals
+UA,John Ryan,Baltimore Monumentals
+UA,John Rudderham,Boston Reds
+UA,John O'Donnell,Philadelphia Keystones
+UA,John O'Brien,Baltimore Monumentals
+UA,John Murphy,Wilmington Quicksteps
+UA,John Murphy,Altoona Mountain City
+UA,John Munce,Wilmington Quicksteps
+UA,John Mulligan,Washington Nationals
+UA,John McGuinness,Philadelphia Keystones
+UA,John Kirby,Kansas City Cowboys
+UA,John Kelly,Washington Nationals
+UA,John Kelly,Cincinnati Outlaw Reds
+UA,John Irwin,Boston Reds
+UA,John Horan,Chicago/Pittsburgh (Union League)
+UA,John Grady,Altoona Mountain City
+UA,John Ewing,Washington Nationals
+UA,John Ewing,Cincinnati Outlaw Reds
+UA,John Deasley,Washington Nationals
+UA,John Deasley,Kansas City Cowboys
+UA,John Cullen,Wilmington Quicksteps
+UA,John Cuff,Baltimore Monumentals
+UA,John Cattanach,St. Louis Maroons
+UA,Joe Werrick,St. Paul Apostles
+UA,Joe Strauss,Kansas City Cowboys
+UA,Joe Stanley,Baltimore Monumentals
+UA,Joe Quinn,St. Louis Maroons
+UA,Joe Gunson,Washington Nationals
+UA,Joe Flynn,Philadelphia Keystones
+UA,Joe Flynn,Boston Reds
+UA,Joe Ellick,Kansas City Cowboys
+UA,Joe Ellick,Chicago/Pittsburgh (Union League)
+UA,Joe Ellick,Baltimore Monumentals
+UA,Joe Crotty,Cincinnati Outlaw Reds
+UA,Joe Connors,Kansas City Cowboys
+UA,Joe Connors,Altoona Mountain City
+UA,Joe Battin,Chicago/Pittsburgh (Union League)
+UA,Joe Battin,Baltimore Monumentals
+UA,Jimmy Say,Wilmington Quicksteps
+UA,Jimmy Say,Kansas City Cowboys
+UA,Jim McKeever,Boston Reds
+UA,Jim McElroy,Wilmington Quicksteps
+UA,Jim McDonald,Washington Nationals
+UA,Jim McCormick,Cincinnati Outlaw Reds
+UA,Jim Halpin,Washington Nationals
+UA,Jim Green,Washington Nationals
+UA,Jim Donnelly,Kansas City Cowboys
+UA,Jim Cudworth,Kansas City Cowboys
+UA,Jim Chatterton,Kansas City Cowboys
+UA,Jim Brown,St. Paul Apostles
+UA,Jim Brown,Altoona Mountain City
+UA,Jim Brennan,St. Louis Maroons
+UA,Jersey Bakely,Wilmington Quicksteps
+UA,Jersey Bakely,Philadelphia Keystones
+UA,Jersey Bakely,Kansas City Cowboys
+UA,Jerry Turbidy,Kansas City Cowboys
+UA,Jerry Sweeney,Kansas City Cowboys
+UA,Jerry McCormick,Washington Nationals
+UA,Jerry McCormick,Philadelphia Keystones
+UA,Jerry Dorsey,Baltimore Monumentals
+UA,Jerrie Moore,Altoona Mountain City
+UA,James McLaughlin,Washington Nationals
+UA,James Burke,Boston Reds
+UA,Jack Leary,Chicago/Pittsburgh (Union League)
+UA,Jack Leary,Altoona Mountain City
+UA,Jack Gorman,Kansas City Cowboys
+UA,Jack Gleason,St. Louis Maroons
+UA,Jack Glasscock,Cincinnati Outlaw Reds
+UA,Jack Clements,Philadelphia Keystones
+UA,Jack (RL) Jones,Cincinnati Outlaw Reds
+UA,J. Fisher,Philadelphia Keystones
+UA,Ike Benners,Wilmington Quicksteps
+UA,Icicle Reeder,Washington Nationals
+UA,Hugh Daily,Washington Nationals
+UA,Hugh Daily,Chicago/Pittsburgh (Union League)
+UA,Henry Porter,Milwaukee Brewers
+UA,Henry Oberbeck,Kansas City Cowboys
+UA,Henry Oberbeck,Baltimore Monumentals
+UA,Henry Myers,Wilmington Quicksteps
+UA,Henry Mullin,Boston Reds
+UA,Henry Luff,Philadelphia Keystones
+UA,Henry Luff,Kansas City Cowboys
+UA,Henry Easterday,Philadelphia Keystones
+UA,Henry Boyle,St. Louis Maroons
+UA,Harry Wheeler,Kansas City Cowboys
+UA,Harry Wheeler,Chicago/Pittsburgh (Union League)
+UA,Harry Wheeler,Baltimore Monumentals
+UA,Harry Moore,Washington Nationals
+UA,Harry Koons,Chicago/Pittsburgh (Union League)
+UA,Harry Koons,Altoona Mountain City
+UA,Harry Decker,Kansas City Cowboys
+UA,Gus Alberts,Washington Nationals
+UA,Gid Gardner,Chicago/Pittsburgh (Union League)
+UA,Gid Gardner,Baltimore Monumentals
+UA,Germany Smith,Altoona Mountain City
+UA,George Strief,Kansas City Cowboys
+UA,George Strief,Chicago/Pittsburgh (Union League)
+UA,George Pattison,Philadelphia Keystones
+UA,George Noftsker,Altoona Mountain City
+UA,George Fisher,Wilmington Quicksteps
+UA,George Daisey,Altoona Mountain City
+UA,George Bradley,Cincinnati Outlaw Reds
+UA,George Bignell,Milwaukee Brewers
+UA,George Baker,St. Louis Maroons
+UA,Fred Tenney,Wilmington Quicksteps
+UA,Fred Tenney,Washington Nationals
+UA,Fred Tenney,Boston Reds
+UA,Fred Robinson,Cincinnati Outlaw Reds
+UA,Fred Lewis,St. Louis Maroons
+UA,Fred Dunlap,St. Louis Maroons
+UA,Frank Wyman,Kansas City Cowboys
+UA,Frank Wyman,Chicago/Pittsburgh (Union League)
+UA,Frank Shaffer,Kansas City Cowboys
+UA,Frank Shaffer,Baltimore Monumentals
+UA,Frank Shaffer,Altoona Mountain City
+UA,Frank Olin,Washington Nationals
+UA,Frank McLaughlin,Kansas City Cowboys
+UA,Frank McLaughlin,Cincinnati Outlaw Reds
+UA,Frank McLaughlin,Chicago/Pittsburgh (Union League)
+UA,Frank McKee,Washington Nationals
+UA,Frank Kreeger,Kansas City Cowboys
+UA,Frank Harris,Altoona Mountain City
+UA,Frank Foreman,Kansas City Cowboys
+UA,Frank Foreman,Chicago/Pittsburgh (Union League)
+UA,Frank Bishop,Chicago/Pittsburgh (Union League)
+UA,Frank Beck,Baltimore Monumentals
+UA,Frank Bahret,Baltimore Monumentals
+UA,Fergy Malone,Philadelphia Keystones
+UA,Fatty Briody,Cincinnati Outlaw Reds
+UA,Ernie Hickman,Kansas City Cowboys
+UA,Emory Nusz,Washington Nationals
+UA,Emmett Seery,Kansas City Cowboys
+UA,Emmett Seery,Baltimore Monumentals
+UA,Emil Gross,Chicago/Pittsburgh (Union League)
+UA,Elmer Foster,Philadelphia Keystones
+UA,Elmer Cleveland,Cincinnati Outlaw Reds
+UA,Elias Peak,Philadelphia Keystones
+UA,Elias Peak,Boston Reds
+UA,Eddie Hogan,Milwaukee Brewers
+UA,Eddie Fusselback,Baltimore Monumentals
+UA,Ed Yewell,Washington Nationals
+UA,Ed Smith,Baltimore Monumentals
+UA,Ed McKenna,Washington Nationals
+UA,Ed Kennedy,Cincinnati Outlaw Reds
+UA,Ed Cushman,Milwaukee Brewers
+UA,Ed Crane,Boston Reds
+UA,Ed Callahan,St. Louis Maroons
+UA,Ed Callahan,Kansas City Cowboys
+UA,Ed Callahan,Boston Reds
+UA,E. Morris,Baltimore Monumentals
+UA,Dupee Shaw,Boston Reds
+UA,Doug Crothers,Kansas City Cowboys
+UA,Dick Phelan,Baltimore Monumentals
+UA,Dick Burns,Cincinnati Outlaw Reds
+UA,Dick Blaisdell,Kansas City Cowboys
+UA,Dennis Casey,Wilmington Quicksteps
+UA,Dave Rowe,St. Louis Maroons
+UA,Dave Drew,Washington Nationals
+UA,Dave Drew,Philadelphia Keystones
+UA,Dan O'Leary,Cincinnati Outlaw Reds
+UA,Dan Cronin,St. Louis Maroons
+UA,Dan Cronin,Chicago/Pittsburgh (Union League)
+UA,Dan Casey,Wilmington Quicksteps
+UA,Cyclone Miller,Chicago/Pittsburgh (Union League)
+UA,Con Daily,Philadelphia Keystones
+UA,Clarence Dow,Boston Reds
+UA,Clarence Cross,Philadelphia Keystones
+UA,Clarence Cross,Kansas City Cowboys
+UA,Clarence Cross,Altoona Mountain City
+UA,Chris Rickley,Philadelphia Keystones
+UA,Chris McFarland,Baltimore Monumentals
+UA,Chris Fulmer,Washington Nationals
+UA,Chippy McGarr,Chicago/Pittsburgh (Union League)
+UA,Chick Carroll,Washington Nationals
+UA,Charlie Sweeney,St. Louis Maroons
+UA,Charlie Reilley,Boston Reds
+UA,Charlie Manlove,Altoona Mountain City
+UA,Charlie Levis,Washington Nationals
+UA,Charlie Levis,Baltimore Monumentals
+UA,Charlie Kalbfus,Washington Nationals
+UA,Charlie Householder,Chicago/Pittsburgh (Union League)
+UA,Charlie Hodnett,St. Louis Maroons
+UA,Charlie Ganzel,St. Paul Apostles
+UA,Charlie Gagus,Washington Nationals
+UA,Charlie Dougherty,Altoona Mountain City
+UA,Charlie Daniels,Boston Reds
+UA,Charlie Cady,Kansas City Cowboys
+UA,Charlie Cady,Chicago/Pittsburgh (Union League)
+UA,Charlie Briggs,Chicago/Pittsburgh (Union League)
+UA,Charlie Berry,Kansas City Cowboys
+UA,Charlie Berry,Chicago/Pittsburgh (Union League)
+UA,Charlie Berry,Altoona Mountain City
+UA,Charlie Bastian,Wilmington Quicksteps
+UA,Charlie Bastian,Kansas City Cowboys
+UA,Charlie Barber,Cincinnati Outlaw Reds
+UA,Charlie Baker,Chicago/Pittsburgh (Union League)
+UA,Charles Fisher,Kansas City Cowboys
+UA,Charles Fisher,Chicago/Pittsburgh (Union League)
+UA,Cal Broughton,Milwaukee Brewers
+UA,C.V. Matteson,St. Louis Maroons
+UA,Buttercup Dickerson,St. Louis Maroons
+UA,Buster Hoover,Philadelphia Keystones
+UA,Bob Black,Kansas City Cowboys
+UA,Billy Taylor,St. Louis Maroons
+UA,Billy O'Brien,St. Paul Apostles
+UA,Billy O'Brien,Kansas City Cowboys
+UA,Billy Geer,Philadelphia Keystones
+UA,Bill Wise,Washington Nationals
+UA,Bill Tierney,Baltimore Monumentals
+UA,Bill Sweeney,Baltimore Monumentals
+UA,Bill Schwartz,Cincinnati Outlaw Reds
+UA,Bill Rollinson,Washington Nationals
+UA,Bill Morgan,Baltimore Monumentals
+UA,Bill McCloskey,Wilmington Quicksteps
+UA,Bill Krieg,Chicago/Pittsburgh (Union League)
+UA,Bill Kienzle,Philadelphia Keystones
+UA,Bill Jones,Philadelphia Keystones
+UA,Bill Johnson,Philadelphia Keystones
+UA,Bill Hutchison,Kansas City Cowboys
+UA,Bill Hughes,Washington Nationals
+UA,Bill Hawes,Cincinnati Outlaw Reds
+UA,Bill Harbidge,Cincinnati Outlaw Reds
+UA,Bill Gallagher,Philadelphia Keystones
+UA,Bill Dugan,Kansas City Cowboys
+UA,Bill Barnes,St. Paul Apostles
+UA,Bernie Graham,Chicago/Pittsburgh (Union League)
+UA,Bernie Graham,Baltimore Monumentals
+UA,Barney McLaughlin,Kansas City Cowboys
+UA,Art Thompson,Washington Nationals
+UA,Art Sladen,Boston Reds
+UA,Anton Falch,Milwaukee Brewers
+UA,Alexander Skinner,Chicago/Pittsburgh (Union League)
+UA,Alexander Skinner,Baltimore Monumentals
+UA,Alex Voss,Washington Nationals
+UA,Alex Voss,Kansas City Cowboys
+UA,Al Myers,Milwaukee Brewers
+UA,Al Maul,Philadelphia Keystones
+UA,Al Dwight,Kansas City Cowboys
+UA,Al Bradley,Washington Nationals
+UA,Al Atkinson,Chicago/Pittsburgh (Union League)
+UA,Al Atkinson,Baltimore Monumentals
+UA,Abner Powell,Washington Nationals
+UA,0,Washington Nationals
+UA,0,Kansas City Cowboys
+UA,0,Chicago/Pittsburgh (Union League)
+UA,0,Boston Reds
+UA,0,Baltimore Monumentals
+PL,Yank Robinson,Pittsburgh Burghers
+PL,Willie McGill,Cleveland Infants
+PL,Willard Brown,New York Giants
+PL,Tommy Corcoran,Pittsburgh Burghers
+PL,Tom Quinn,Pittsburgh Burghers
+PL,Tom Kinslow,Brooklyn Ward's Wonders
+PL,Tom Brown,Boston Reds
+PL,Tip O'Neill,Chicago Pirates
+PL,Tim Keefe,New York Giants
+PL,Sy Sutcliffe,Cleveland Infants
+PL,Spider Clark,Buffalo Bisons
+PL,Silver King,Chicago Pirates
+PL,Sid Farrar,Philadelphia Athletics
+PL,Sam Wise,Buffalo Bisons
+PL,Roger Connor,New York Giants
+PL,Pud Galvin,Pittsburgh Burghers
+PL,Pop Swett,Boston Reds
+PL,Pop Snyder,Cleveland Infants
+PL,Phil Knell,Philadelphia Athletics
+PL,Pete Browning,Cleveland Infants
+PL,Paul Radford,Cleveland Infants
+PL,Paul Cook,Brooklyn Ward's Wonders
+PL,Patsy Tebeau,Cleveland Infants
+PL,Neil Stynes,Cleveland Infants
+PL,Ned Williamson,Chicago Pirates
+PL,Ned Hanlon,Pittsburgh Burghers
+PL,Morgan Murphy,Boston Reds
+PL,Mike Slattery,New York Giants
+PL,Mike Griffin,Philadelphia Athletics
+PL,Matt Kilroy,Boston Reds
+PL,Mark Baldwin,Chicago Pirates
+PL,Lou Bierbauer,Brooklyn Ward's Wonders
+PL,Lave Cross,Philadelphia Athletics
+PL,Larry Twitchell,Cleveland Infants
+PL,Larry Twitchell,Buffalo Bisons
+PL,Lady Baldwin,Buffalo Bisons
+PL,King Kelly,Boston Reds
+PL,Kid Madden,Boston Reds
+PL,John Ward,Brooklyn Ward's Wonders
+PL,John Tener,Pittsburgh Burghers
+PL,John Sowders,Brooklyn Ward's Wonders
+PL,John Rainey,Buffalo Bisons
+PL,John Pickett,Philadelphia Athletics
+PL,John Morrill,Boston Reds
+PL,John Irwin,Buffalo Bisons
+PL,John Ewing,New York Giants
+PL,John Carney,Cleveland Infants
+PL,John Carney,Buffalo Bisons
+PL,John Buckley,Buffalo Bisons
+PL,Joe Visner,Pittsburgh Burghers
+PL,Joe Quinn,Boston Reds
+PL,Joe Mulvey,Philadelphia Athletics
+PL,Jocko Milligan,Philadelphia Athletics
+PL,Jocko Halligan,Buffalo Bisons
+PL,Jocko Fields,Pittsburgh Burghers
+PL,Jimmy Ryan,Chicago Pirates
+PL,Jimmy McAleer,Cleveland Infants
+PL,Jim O'Rourke,New York Giants
+PL,Jim Gray,Pittsburgh Burghers
+PL,Jim Gillespie,Buffalo Bisons
+PL,Jim Fogarty,Philadelphia Athletics
+PL,Jim Brennan,Cleveland Infants
+PL,Jersey Bakely,Cleveland Infants
+PL,Jerry Hurley,Pittsburgh Burghers
+PL,Jay Faatz,Buffalo Bisons
+PL,Jake Beckley,Pittsburgh Burghers
+PL,Jackie Hayes,Brooklyn Ward's Wonders
+PL,Jack Rowe,Buffalo Bisons
+PL,Jack McGeachy,Brooklyn Ward's Wonders
+PL,Jack Boyle,Chicago Pirates
+PL,Hugh Duffy,Chicago Pirates
+PL,Henry Larkin,Cleveland Infants
+PL,Henry Gruber,Cleveland Infants
+PL,Harry Stovey,Boston Reds
+PL,Harry Staley,Pittsburgh Burghers
+PL,Hardy Richardson,Boston Reds
+PL,Hank O'Day,New York Giants
+PL,Gus Weyhing,Brooklyn Ward's Wonders
+PL,Gus Krock,Buffalo Bisons
+PL,Gil Hatfield,New York Giants
+PL,George Wood,Philadelphia Athletics
+PL,George Van Haltren,Brooklyn Ward's Wonders
+PL,George Keefe,Buffalo Bisons
+PL,George Hemming,Cleveland Infants
+PL,George Hemming,Brooklyn Ward's Wonders
+PL,George Haddock,Buffalo Bisons
+PL,George Gore,New York Giants
+PL,General Stafford,Buffalo Bisons
+PL,Fred Pfeffer,Chicago Pirates
+PL,Fred Dunlap,New York Giants
+PL,Fred Doe,Pittsburgh Burghers
+PL,Fred Doe,Buffalo Bisons
+PL,Fred Carroll,Pittsburgh Burghers
+PL,Frank Shugart,Chicago Pirates
+PL,Frank Dwyer,Chicago Pirates
+PL,Farmer Vaughn,New York Giants
+PL,Emmett Seery,Brooklyn Ward's Wonders
+PL,Ed Morris,Pittsburgh Burghers
+PL,Ed Delahanty,Cleveland Infants
+PL,Ed Crane,New York Giants
+PL,Ed Beecher,Buffalo Bisons
+PL,Ed Andrews,Brooklyn Ward's Wonders
+PL,Dummy Hoy,Buffalo Bisons
+PL,Duke Farrell,Chicago Pirates
+PL,Dick Johnston,New York Giants
+PL,Dick Johnston,Boston Reds
+PL,Dell Darling,Chicago Pirates
+PL,Deacon White,Buffalo Bisons
+PL,Dave Orr,Brooklyn Ward's Wonders
+PL,Darby O'Brien,Cleveland Infants
+PL,Danny Richardson,New York Giants
+PL,Dan Shannon,Philadelphia Athletics
+PL,Dan Shannon,New York Giants
+PL,Dan Cotter,Buffalo Bisons
+PL,Dan Brouthers,Boston Reds
+PL,Cub Stricker,Cleveland Infants
+PL,Connie Mack,Buffalo Bisons
+PL,Con Murphy,Brooklyn Ward's Wonders
+PL,Con Daily,Brooklyn Ward's Wonders
+PL,Charlie Dewald,Cleveland Infants
+PL,Charlie Comiskey,Chicago Pirates
+PL,Charlie Buffinton,Philadelphia Athletics
+PL,Charlie Bastian,Chicago Pirates
+PL,Charlie Bartson,Chicago Pirates
+PL,Charley Radbourn,Boston Reds
+PL,Buck Ewing,New York Giants
+PL,Billy Shindle,Philadelphia Athletics
+PL,Billy Nash,Boston Reds
+PL,Bill Kuehne,Pittsburgh Burghers
+PL,Bill Joyce,Brooklyn Ward's Wonders
+PL,Bill Husted,Philadelphia Athletics
+PL,Bill Hallman,Philadelphia Athletics
+PL,Bill Gleason,Cleveland Infants
+PL,Bill Duzen,Buffalo Bisons
+PL,Bill Daley,Boston Reds
+PL,Bert Cunningham,Philadelphia Athletics
+PL,Bert Cunningham,Buffalo Bisons
+PL,Ben Sanders,Philadelphia Athletics
+PL,Arthur Irwin,Boston Reds
+PL,Art Whitney,New York Giants
+PL,Art Sunday,Brooklyn Ward's Wonders
+PL,Arlie Latham,Chicago Pirates
+PL,Alex Ferson,Buffalo Bisons
+PL,Al Maul,Pittsburgh Burghers
+PL,Ad Gumbert,Boston Reds
+PL,0,Cleveland Infants
+PL,0,Buffalo Bisons
+NL,Zoilo Versalles,Los Angeles Dodgers
+NL,Zoilo Versalles,Atlanta Braves
+NL,Zip Zabel,Chicago Cubs
+NL,Zip Collins,Pittsburgh Pirates
+NL,Zip Collins,Boston Braves
+NL,Zinn Beck,St. Louis Cardinals
+NL,Zeke Wrigley,Washington Senators
+NL,Zeke Wrigley,New York Giants
+NL,Zeke Wrigley,Brooklyn Superbas
+NL,Zeke Wilson,St. Louis Perfectos
+NL,Zeke Wilson,Cleveland Spiders
+NL,Zeke Wilson,Boston Beaneaters
+NL,Zeke Rosebraugh,Pittsburgh Pirates
+NL,Zeke Bonura,New York Giants
+NL,Zeke Bonura,Chicago Cubs
+NL,Zeb Terry,Pittsburgh Pirates
+NL,Zeb Terry,Chicago Cubs
+NL,Zeb Terry,Boston Braves
+NL,Zaza Harvey,Chicago Orphans
+NL,Zane Smith,Pittsburgh Pirates
+NL,Zane Smith,Montreal Expos
+NL,Zane Smith,Atlanta Braves
+NL,Zack Wheat,Brooklyn Superbas
+NL,Zack Wheat,Brooklyn Robins
+NL,Zack Wheat,Brooklyn Dodgers
+NL,Zack Taylor,New York Giants
+NL,Zack Taylor,Chicago Cubs"
+MAX,"select max(""int0"") as ""C1""from ""rp"".""calcs""",11
+MIN,"select min(""int0"") as ""C1""from ""rp"".""calcs""",1
+COUNT,"select count(""key"") as ""C1""from ""rp"".""calcs""",17
+TAN,"select sum(     decimal(""C1"")               ) as ""C1""
+from 
+(
+    select  1.5574  as ""C1""
+    from ""rp"".""calcs""
+) as ""ITBL""",17
+Total stores,"select top 101
+    name
+from 
+(
+    select name
+    from 
+    (
+        select name,
+            case
+                when not C1 is null and (C1 =  2014  and C1 is not null)
+                then  'New Store' 
+                else  'Same Store' 
+            end as C2
+        from 
+        (
+            select opendate,
+                name,
+                     year(opendate)   as C1
+            from rp.store
+        ) as ITBL
+    ) as ITBL
+    where C2 =  'New Store'
+) as ITBL
+group by name","York Fashions Direct
+Winchester Fashions Direct
+Washington Fashions Direct
+Monroeville Fashions Direct
+Sharonville Fashions Direct
+Cincinnati 2 Fashions Direct
+Pasadena Lindseys
+Ft. Oglethorpe Lindseys
+Knoxville Lindseys
+Wilson Lindseys"
+Current year sales by Store number name,"select top 1000001
+    ""name"",
+    sum(     float8(""sum_markdown_sales_dollars"")               ) as ""C1"",
+    sum(     float8(""sum_regular_sales_dollars"")               ) as ""C2""
+from 
+(
+    select ""OTBL"".""sum_regular_sales_dollars"",
+        ""OTBL"".""sum_markdown_sales_dollars"",
+        ""ITBL"".""name""
+    from 
+    (
+        select ""monthid"",
+            ""itemid"",
+            ""locationid"",
+            ""sum_grossmarginamount"",
+            ""sum_regular_sales_dollars"",
+            ""sum_markdown_sales_dollars"",
+            ""scenarioid"",
+            ""reportingperiodid"",
+            ""sum_regular_sales_units"",
+            ""sum_markdown_sales_units""
+        from ""rp"".""sales""
+        where ""scenarioid"" =  1
+    ) as ""OTBL""
+    left outer join 
+    (
+        select ""locationid"",
+            ""name"",
+            case
+                when not ""C1"" is null and (""C1"" =  2014  and ""C1"" is not null)
+                then  'New Store' 
+                else  'Same Store' 
+            end as ""C2""
+        from 
+        (
+            select ""locationid"",
+                ""opendate"",
+                ""name"",
+                     year(""opendate"")   as ""C1""
+            from ""rp"".""store""
+        ) as ""ITBL""
+    ) as ""ITBL"" on (""OTBL"".""locationid"" = ""ITBL"".""locationid"")
+    where ""C2"" =  'New Store'
+) as ""ITBL""
+group by ""name""","Winchester Fashions Direct
+Washington Fashions Direct"
+Open Store Countby month and Chain,"select top 1000001
+    ""chain"",
+    ""C4"",
+    count(""opendate"") as ""C1""
+from 
+(
+    select ""opendate"",
+        ""chain"",
+        ""C3"",
+        ""C4""
+    from 
+    (
+        select ""opendate"",
+            ""chain"",
+            case
+                when not ""C1"" is null and (""C1"" =  2014  and ""C1"" is not null)
+                then  'New Store' 
+                else  'Same Store' 
+            end as ""C3"",
+            case
+                when not ""C2"" is null and (""C2"" =  1  and ""C2"" is not null)
+                then  'January' 
+                else (case
+                    when not ""C2"" is null and (""C2"" =  2  and ""C2"" is not null)
+                    then  'February' 
+                    else (case
+                        when not ""C2"" is null and (""C2"" =  3  and ""C2"" is not null)
+                        then  'March'
+                        else (case
+                            when not ""C2"" is null and (""C2"" =  4  and ""C2"" is not null)
+                            then  'April' 
+                            else (case
+                                when not ""C2"" is null and (""C2"" =  5  and ""C2"" is not null)
+                                then  'May'
+                                else (case
+                                    when not ""C2"" is null and (""C2"" =  6  and ""C2"" is not null)
+                                    then  'June' 
+                                    else (case
+                                        when not ""C2"" is null and (""C2"" =  7  and ""C2"" is not null)
+                                        then  'July' 
+                                        else (case
+                                            when not ""C2"" is null and (""C2"" =  8  and ""C2"" is not null)
+                                            then  'August' 
+                                            else (case
+                                                when not ""C2"" is null and (""C2"" =  9  and ""C2"" is not null)
+                                                then  'September' 
+                                                else (case
+                                                    when not ""C2"" is null and (""C2"" =  10  and ""C2"" is not null)
+                                                    then 'October'
+                                                    else (case
+                                                        when not ""C2"" is null and (""C2"" =  11  and ""C2"" is not null)
+                                                        then  'November' 
+                                                        else (case
+                                                            when not ""C2"" is null and (""C2"" =  12  and ""C2"" is not null)
+                                                            then  'December' 
+                                                            else  'Unknown month number' 
+                                                        end)
+                                                    end)
+                                                end)
+                                            end)
+                                        end)
+                                    end)
+                                end)
+                            end)
+                        end)
+                    end)
+                end)
+            end as ""C4""
+        from 
+        (
+            select ""opendate"",
+                ""chain"",
+                     year(""opendate"")   as ""C1"",
+                     month(""opendate"")   as ""C2""
+            from ""rp"".""store""
+        ) as ""ITBL""
+    ) as ""ITBL""
+    where ""C3"" =  'New Store'
+) as ""ITBL""
+group by ""chain"",
+    ""C4""","Fashions Direct
+Lindseys"
+Sales perSqft by Name,"select top 1000001
+    ""name"",
+    sum(     float8(""sellingareasize"")               ) as ""C1""
+from 
+(
+    select ""sellingareasize"",
+        ""name"",
+        ""C2""
+    from 
+    (
+        select ""sellingareasize"",
+            ""name"",
+            case
+                when not ""C1"" is null and (""C1"" =  2014  and ""C1"" is not null)
+                then  'New Store' 
+                else  'Same Store' 
+            end as ""C2""
+        from 
+        (
+            select ""opendate"",
+                ""sellingareasize"",
+                ""name"",
+                     year(""opendate"")   as ""C1""
+            from ""rp"".""store""
+        ) as ""ITBL""
+    ) as ""ITBL""
+    where ""C2"" =  'New Store'
+) as ""ITBL""
+group by ""name""","York Fashions Direct
+Winchester Fashions Direct
+Washington Fashions Direct
+Monroeville Fashions Direct
+Sharonville Fashions Direct
+Cincinnati 2 Fashions Direct
+Pasadena Lindseys
+Ft. Oglethorpe Lindseys
+Knoxville Lindseys
+Wilson Lindseys"
+Sales by Product category,"select top 1000001
+    category,
+    sum(     float8(sum_markdown_sales_dollars)               ) as C1,
+    sum(     float8(sum_regular_sales_dollars)               ) as C2
+from 
+(
+    select OTBL.sum_regular_sales_dollars,
+        OTBL.sum_markdown_sales_dollars,
+        ITBL.category
+    from 
+    (
+        select monthid,
+            itemid,
+            locationid,
+            sum_grossmarginamount,
+            sum_regular_sales_dollars,
+            sum_markdown_sales_dollars,
+            scenarioid,
+            reportingperiodid,
+            sum_regular_sales_units,
+            sum_markdown_sales_units
+        from rp.sales
+        where scenarioid =  1 
+    ) as OTBL
+    left outer join rp.item as ITBL on (OTBL.itemid = ITBL.itemid)
+) as ITBL
+group by category
+","010-Womens
+030-Kids"
+Monthly Sales by Segment,"select top 1000001
+    ""fiscalmonth"",
+    ""segment"",
+    sum(     float8(""sum_markdown_sales_dollars"")               ) as ""C1"",
+    sum(     float8(""sum_regular_sales_dollars"")               ) as ""C2""
+from 
+(
+    select ""OTBL"".""sum_regular_sales_dollars"",
+        ""OTBL"".""sum_markdown_sales_dollars"",
+        ""OTBL"".""fiscalmonth"",
+        ""ITBL"".""segment""
+    from 
+    (
+        select ""monthid"",
+            ""itemid"",
+            ""locationid"",
+            ""sum_grossmarginamount"",
+            ""sum_regular_sales_dollars"",
+            ""sum_markdown_sales_dollars"",
+            ""scenarioid"",
+            ""reportingperiodid"",
+            ""sum_regular_sales_units"",
+            ""sum_markdown_sales_units"",
+            ""C1"",
+            ""period"",
+            ""fiscalyear"",
+            ""fiscalmonth"",
+            ""month"",
+            ""C2"",
+            ""C3""
+        from 
+        (
+            select ""OTBL"".""monthid"",
+                ""OTBL"".""itemid"",
+                ""OTBL"".""locationid"",
+                ""OTBL"".""sum_grossmarginamount"",
+                ""OTBL"".""sum_regular_sales_dollars"",
+                ""OTBL"".""sum_markdown_sales_dollars"",
+                ""OTBL"".""scenarioid"",
+                ""OTBL"".""reportingperiodid"",
+                ""OTBL"".""sum_regular_sales_units"",
+                ""OTBL"".""sum_markdown_sales_units"",
+                ""OTBL"".""C1"",
+                ""OTBL"".""period"",
+                ""OTBL"".""fiscalyear"",
+                ""OTBL"".""fiscalmonth"",
+                ""OTBL"".""month"",
+                ""ITBL"".""locationid"" as ""C2"",
+                ""ITBL"".""C2"" as ""C3""
+            from 
+            (
+                select ""OTBL"".""monthid"",
+                    ""OTBL"".""itemid"",
+                    ""OTBL"".""locationid"",
+                    ""OTBL"".""sum_grossmarginamount"",
+                    ""OTBL"".""sum_regular_sales_dollars"",
+                    ""OTBL"".""sum_markdown_sales_dollars"",
+                    ""OTBL"".""scenarioid"",
+                    ""OTBL"".""reportingperiodid"",
+                    ""OTBL"".""sum_regular_sales_units"",
+                    ""OTBL"".""sum_markdown_sales_units"",
+                    ""ITBL"".""reportingperiodid"" as ""C1"",
+                    ""ITBL"".""period"",
+                    ""ITBL"".""fiscalyear"",
+                    ""ITBL"".""fiscalmonth"",
+                    ""ITBL"".""month""
+                from 
+                (
+                    select ""monthid"",
+                        ""itemid"",
+                        ""locationid"",
+                        ""sum_grossmarginamount"",
+                        ""sum_regular_sales_dollars"",
+                        ""sum_markdown_sales_dollars"",
+                        ""scenarioid"",
+                        ""reportingperiodid"",
+                        ""sum_regular_sales_units"",
+                        ""sum_markdown_sales_units""
+                    from ""rp"".""sales""
+                    where ""scenarioid"" =  1 
+                ) as ""OTBL""
+                left outer join ""rp"".""time"" as ""ITBL"" on (""OTBL"".""reportingperiodid"" = ""ITBL"".""reportingperiodid"")
+            ) as ""OTBL""
+            left outer join 
+            (
+                select ""locationid"",
+                    case
+                        when not ""C1"" is null and (""C1"" =  2014  and ""C1"" is not null)
+                        then  'New Store' 
+                        else  'Same Store' 
+                    end as ""C2""
+                from 
+                (
+                    select ""locationid"",
+                        ""opendate"",
+                             year(""opendate"")   as ""C1""
+                    from ""rp"".""store""
+                ) as ""ITBL""
+            ) as ""ITBL"" on (""OTBL"".""locationid"" = ""ITBL"".""locationid"")
+        ) as ""ITBL""
+        where ""C3"" =  'New Store' 
+    ) as ""OTBL""
+    left outer join ""rp"".""item"" as ""ITBL"" on (""OTBL"".""itemid"" = ""ITBL"".""itemid"")
+) as ""ITBL""
+group by ""fiscalmonth"",
+    ""segment""","Feb
+Mar"
+Monthly Sales by Item,"select top 1000001
+    ""fiscalmonth"",
+    ""C4"",
+    sum(     float8(""sum_markdown_sales_dollars"")               ) as ""C1"",
+    sum(     float8(""sum_regular_sales_dollars"")               ) as ""C2""
+from 
+(
+    select ""OTBL"".""sum_regular_sales_dollars"",
+        ""OTBL"".""sum_markdown_sales_dollars"",
+        ""OTBL"".""fiscalmonth"",
+        ""ITBL"".""itemid"" as ""C4""
+    from 
+    (
+        select ""monthid"",
+            ""itemid"",
+            ""locationid"",
+            ""sum_grossmarginamount"",
+            ""sum_regular_sales_dollars"",
+            ""sum_markdown_sales_dollars"",
+            ""scenarioid"",
+            ""reportingperiodid"",
+            ""sum_regular_sales_units"",
+            ""sum_markdown_sales_units"",
+            ""C1"",
+            ""period"",
+            ""fiscalyear"",
+            ""fiscalmonth"",
+            ""month"",
+            ""C2"",
+            ""C3""
+        from 
+        (
+            select ""OTBL"".""monthid"",
+                ""OTBL"".""itemid"",
+                ""OTBL"".""locationid"",
+                ""OTBL"".""sum_grossmarginamount"",
+                ""OTBL"".""sum_regular_sales_dollars"",
+                ""OTBL"".""sum_markdown_sales_dollars"",
+                ""OTBL"".""scenarioid"",
+                ""OTBL"".""reportingperiodid"",
+                ""OTBL"".""sum_regular_sales_units"",
+                ""OTBL"".""sum_markdown_sales_units"",
+                ""OTBL"".""C1"",
+                ""OTBL"".""period"",
+                ""OTBL"".""fiscalyear"",
+                ""OTBL"".""fiscalmonth"",
+                ""OTBL"".""month"",
+                ""ITBL"".""locationid"" as ""C2"",
+                ""ITBL"".""C2"" as ""C3""
+            from 
+            (
+                select ""OTBL"".""monthid"",
+                    ""OTBL"".""itemid"",
+                    ""OTBL"".""locationid"",
+                    ""OTBL"".""sum_grossmarginamount"",
+                    ""OTBL"".""sum_regular_sales_dollars"",
+                    ""OTBL"".""sum_markdown_sales_dollars"",
+                    ""OTBL"".""scenarioid"",
+                    ""OTBL"".""reportingperiodid"",
+                    ""OTBL"".""sum_regular_sales_units"",
+                    ""OTBL"".""sum_markdown_sales_units"",
+                    ""ITBL"".""reportingperiodid"" as ""C1"",
+                    ""ITBL"".""period"",
+                    ""ITBL"".""fiscalyear"",
+                    ""ITBL"".""fiscalmonth"",
+                    ""ITBL"".""month""
+                from 
+                (
+                    select ""monthid"",
+                        ""itemid"",
+                        ""locationid"",
+                        ""sum_grossmarginamount"",
+                        ""sum_regular_sales_dollars"",
+                        ""sum_markdown_sales_dollars"",
+                        ""scenarioid"",
+                        ""reportingperiodid"",
+                        ""sum_regular_sales_units"",
+                        ""sum_markdown_sales_units""
+                    from ""rp"".""sales""
+                    where ""scenarioid"" =  1 
+                ) as ""OTBL""
+                left outer join ""rp"".""time"" as ""ITBL"" on (""OTBL"".""reportingperiodid"" = ""ITBL"".""reportingperiodid"")
+            ) as ""OTBL""
+            left outer join 
+            (
+                select ""locationid"",
+                    case
+                        when not ""C1"" is null and (""C1"" =  2014  and ""C1"" is not null)
+                        then  'New Store' 
+                        else  'Same Store'
+                    end as ""C2""
+                from 
+                (
+                    select ""locationid"",
+                        ""opendate"",
+                             year(""opendate"")   as ""C1""
+                    from ""rp"".""store""
+                ) as ""ITBL""
+            ) as ""ITBL"" on (""OTBL"".""locationid"" = ""ITBL"".""locationid"")
+        ) as ""ITBL""
+        where ""C3"" =  'New Store'
+    ) as ""OTBL""
+    left outer join ""rp"".""item"" as ""ITBL"" on (""OTBL"".""itemid"" = ""ITBL"".""itemid"")
+) as ""ITBL""
+group by ""fiscalmonth"",
+    ""C4""","Feb
+Mar"
+Customer/Buyer  Overview,"select top 1000001    ""buyer"",    sum(     float8(""sum_markdown_sales_dollars"")               ) as ""C1"",    sum(     float8(""sum_regular_sales_dollars"")               ) as ""C2""from (    select ""OTBL"".""sum_regular_sales_dollars"",        ""OTBL"".""sum_markdown_sales_dollars"",        ""ITBL"".""buyer""    from     (        select ""monthid"",            ""itemid"",            ""locationid"",            ""sum_grossmarginamount"",            ""sum_regular_sales_dollars"",            ""sum_markdown_sales_dollars"",            ""scenarioid"",            ""reportingperiodid"",            ""sum_regular_sales_units"",            ""sum_markdown_sales_units""        from ""rp"".""sales""        where ""scenarioid"" =  1     ) as ""OTBL""    left outer join ""rp"".""item"" as ""ITBL"" on (""OTBL"".""itemid"" = ""ITBL"".""itemid"")) as ""ITBL""group by ""buyer""","Petty  Perry
+Gentry  Elizabeth"
+,,
+,,
+,,
+,,
+,,
